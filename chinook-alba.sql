@@ -118,7 +118,3 @@ JOIN genres ON genres.GenreId = tracks.TrackId
 JOIN media_types ON media_types.MediaTypeId = tracks.MediaTypeId
 JOIN playlist_track ON playlist_track.TrackId = tracks.TrackId
 JOIN playlists ON playlists.PlaylistId = playlist_track.PlaylistId
-
-
-
-
