@@ -118,3 +118,79 @@ JOIN genres ON genres.GenreId = tracks.TrackId
 JOIN media_types ON media_types.MediaTypeId = tracks.MediaTypeId
 JOIN playlist_track ON playlist_track.TrackId = tracks.TrackId
 JOIN playlists ON playlists.PlaylistId = playlist_track.PlaylistId
+
+
+
+--TP Integrador--
+
+--Parte I: Investigación y Análisis Crítico 
+
+--1) Cuando ejecutamos un UPDATE o DELETE, estamos modificando la base de datos.
+--Si usamos esos comandos sin un WHERE, lo que pasa es que actualizamos o eliminamos
+--todos los registros de las tablas porque no hay una condición que filtre. En la memoria... 
+
+--2) Una restricción de clave foránea establece una relación entre dos tablas y verifica
+--que los valores de una tabla hija coincida con los valores de la tabla a la que se le
+--referencio como padre. Al intenta usar DELETE en una tabla padre, se revierte la acción si
+--está vinculada a una hija, también puedes controlar como afectan los cambios de la tabla padre
+-- a la tabla hija. 
+
+--Parte II: Implementación Práctica (Caso Chinook) 
+
+--1) Primero: 
+    --INSERT INTO artists (ArtistId, name) 
+    --VALUES (276, "Wave to Earth") 
+    
+    --Segundo: 
+    --INSERT INTO albums (AlbumId, Title, ArtistId) 
+    --VALUES (348, "summer flows 0.02" 276) 
+
+    --Tercero: 
+    --INSERT INTO tracks (TrackId, Name, AlbumId, MediaTypeId, GenreId,  Composer, Milliseconds, UnitPrice)  
+    --VALUES (3504, "seasons", 348,  1, 9,  "Daniel Kim", 256000, 0.99), 
+    --    (3505, "ride", 348, 1,  1,  "Daniel Kim", 228000, 0.99) 
+
+--2) Corrección de Datos: 
+--UPDATE employees  
+--SET Address = "Av. Siempreviva 742", City = "Springfield"  
+--WHERE EmployeeId = 3 
+
+    --Ajuste de Datos: 
+--UPDATE tracks 
+--SET UnitPrice = UnitPrice * 1.10 
+--WHERE GenreId = 2 
+
+ 
+
+    --Baja de Prueba: 
+--Error:  
+--Execution finished with errors. 
+--Result: FOREIGN KEY constraint failed 
+--At line 1: 
+--DELETE FROM artists WHERE name = "Queen" 
+
+--Los registros que se deberían borrar primero para que la sentencia funcione son
+--las tablas “albums” y “tracks”, pero realmente todas las que estén relacionadas. 
+
+    --Eliminación Selectiva:  
+
+--Primer paso: 
+
+--DELETE FROM invoice_items  
+--WHERE InvoiceId IN (  
+--SELECT InvoiceId FROM invoices  
+--WHERE InvoiceDate >= '2010-01-01' AND InvoiceDate < '2011-01-01') 
+
+-- Result: query executed successfully. Took 8ms, 455 rows affected -- EXECUTING ALL IN 'SQL 1' -- -- At line 1: 
+
+--Segundo Paso: 
+
+--DELETE FROM invoices 
+--WHERE InvoiceDate >= '2010-01-01' AND InvoiceDate < '2011-01-01' 
+
+-- Result: query executed successfully. Took 1ms, 83 rows affected 
+
+ 
+
+
+ 
