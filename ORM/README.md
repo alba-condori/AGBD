@@ -1,0 +1,1 @@
+Eliminar el archivo .db, porque sino los resultados se modifican
