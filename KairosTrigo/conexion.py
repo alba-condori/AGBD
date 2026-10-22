@@ -10,12 +10,12 @@ DB_PASSWORD = "kt123456"
 
 # La "dirección completa" de la base
 url = URL.create(
-    drivername="mysql+pymysql",
-    username=DB_USERNAME,
-    password=DB_PASSWORD,
-    host=DB_HOST,
-    port=DB_PORT,
-    database=DB_DATABASE,
+    drivername = "mysql+pymysql",
+    username = DB_USERNAME,
+    password = DB_PASSWORD,
+    host = DB_HOST,
+    port = DB_PORT,
+    database = DB_DATABASE,
 )
 
 # El engine es lo que conecta
