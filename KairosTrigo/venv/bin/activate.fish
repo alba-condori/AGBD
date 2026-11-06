@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/etec/Documentos/alba_condori/AGBD/KairosTrigo/venv
+set -gx VIRTUAL_ENV /home/etec/Documentos/alba/AGBD/KairosTrigo/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

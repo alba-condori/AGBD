@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from conexion import engine
-from modelos import Producto
+from modelos import Producto,Cliente, Pedido, DetallePedido, DetallePersonalizado
 
 with Session(engine) as session:
     productos = [
